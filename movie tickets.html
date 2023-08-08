@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Booking Summary</title>
+<style>
+div#maincontent {
+height: 250px;
+width: 500px;
+border: 1px solid #CEE2FA;
+text-align: left;
+color: #08438E;
+font-family: calibri;
+font-size: 20;
+padding: 5px;
+}
+div#heading {
+text-decoration: bold;
+text-align: center;
+margin-top: 80px;
+width: 500px;
+border: 1px solid #CEE2FA;
+text-align: center;
+color: #08438E;
+background-color: #CEE2FA;
+font-family: calibri;
+font-size: 20;
+padding: 5px;
+}
+h2 {
+padding: 0;
+margin: 0;
+}
+</style>
+</head>
+
+<body>
+<center>
+<div id="heading">
+<h2>Booking Summary</h2>
+</div>
+<div id="maincontent">
+<script>
+let ticket = 9;
+let discount = [5,7,9,11];
+
+document.write("Actual cost per ticket: $" + ticket+"<br><br>"+
+"4 seats are available for festive discount!!<br><br>")
+
+
+let noOfSeats = prompt("please enter no of tickets");
+let seats = parseInt(noOfSeats);
+function calculateCost(){
+return (ticket * seats);
+}
+
+
+let x = parseInt(calculateCost());
+
+
+if (seats < 3){
+let text="";
+for (i = seats ; i<3; i++){
+text + i ;
+}
+document.write("Amount payable: $"+ x);
+}
+else if (seats > 4){
+document.write("Booking is not allowed on more then 4 tickets!");
+}
+else {
+let text = "";
+for (i= 1; i <seats+1 ; i++ ){
+let body = discount[i-1]+"% discount! on ticket "+i+"<br>";
+document.write(body);
+continue;
+}
+
+var discountedAmount = 0;
+for(i=0; i<seats; i++){
+var number = parseInt(discount[i]);
+discountedAmount += (number/100)*ticket;
+}
+document.write("<br><br> Amount payable: $");
+document.write(x-discountedAmount);
+}
+</script>
+</div>
+</center>
+</body>
+
+</html>
